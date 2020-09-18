@@ -1,0 +1,84 @@
+@import '../styles/variables';
+
+#booking-container .wrapper {
+    background-color: $primary;
+}
+
+#booking-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90%;
+
+    .form-col {
+        color: white;
+        width: 50%;
+        padding: 1em;
+        justify-content: space-between;
+
+        label, input {
+            display: block;
+        }
+
+        label {
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.75em 0;
+            outline: none;
+            border: none;
+            border-bottom: 2px solid $grey;
+        }
+
+        input, input:focus {
+            background-color: transparent;
+            color: white;
+        }
+    }
+}
+
+h1, p {
+    color: white;
+}
+
+.divider {
+    display: block;
+    padding: 5em 0;
+}
+
+button {
+    padding: 1.25em;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: $grey;
+}
+
+button:disabled {
+    background-color: $grey;
+    cursor: default;
+}
+
+.submitted {
+    text-align: center;
+    color: black;
+}
+
+@media all and (max-width: 720px) {
+    h1 {
+        font-size: 1.25em;
+    }
+    #booking-container {
+        .wrapper {
+            padding: 2em;
+        }
+
+        .form-col {
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,81 @@
+@import './styles/variables';
+
+* {
+    font-family: Sequel\ 45,sans-serif;
+    font-feature-settings: "calt","liga";
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white;
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 2em 0;
+}
+
+.bio {
+    background-color: $primary;
+    color: white;
+
+    h1 {
+        font-size: 4em;
+    }
+    p {
+        line-height: 1.25;
+        font-size: 1.2em;
+    }
+
+    .bio-text {
+        width: 90%;
+    }
+}
+
+#booking-btn {
+    position: fixed;
+    top: 1.5%;
+    left: 1%;
+    background-color: black;
+    max-width: 5%;
+    padding: 0.5em;
+    color: white;
+    font-size: 1.2em;
+    line-height: 1.5;
+    text-align: center;
+    z-index: 50;
+}
+
+.flex-text {
+    text-align: center;
+}
+
+button {
+    border: none;
+    outline: none;    
+    cursor: pointer;
+}
+
+@media all and (max-width: 720px) {
+    .wrapper {
+        margin: 0;
+        padding: 10px 0;
+    }
+    
+    .gallery {
+        width: 100%;
+    }
+
+    .bio {
+        padding: 1em;
+    }
+
+    #booking-btn {
+        left: 2%;
+        top: 1%;
+        max-width: 12%;
+        font-size: 0.8em;
+    }
+}
