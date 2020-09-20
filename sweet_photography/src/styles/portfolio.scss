@@ -26,9 +26,10 @@
     outline: none;
 }
 
-.cell {
+.grid-column {
     img { 
         width: 100%;
+        cursor: pointer;
     }
 }
 

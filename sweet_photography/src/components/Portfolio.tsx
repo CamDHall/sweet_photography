@@ -14,17 +14,15 @@ const Portfolio = (iUrl: IUrlArray) => {
 
     const [ fullScreenImageSrc, setFullScreenImage ] = useState("");
 
-    const MasonryElement = (data: any) => (
-            <img src={process.env.PUBLIC_URL +"/images/gallery/" + data.data.src} alt={data.data.src} role="image" />
-    );
-
-    const items = images.map(function(image) {
-        return <img src={process.env.PUBLIC_URL +"/images/gallery/" + image.src} key={image.src} />
-      });
-
     const enlargeImage = (event: any) => {
         setFullScreenImage(event.target.src);
     }
+
+    const items = images.map(function(image) {
+        return (
+            <img onClick={enlargeImage} aria-label="Image" src={process.env.PUBLIC_URL +"/images/gallery/" + image.src} key={image.src} />
+        )
+      });
 
     const closeImage = () => {
         setFullScreenImage("");
