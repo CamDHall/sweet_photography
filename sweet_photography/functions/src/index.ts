@@ -5,22 +5,23 @@ const cors = require('cors')({origin: true});
 
 admin.initializeApp();
 
+const config = functions.config();
+
 const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
     secure: true,
     auth: {
-        user: 'sweetdogphotography@gmail.com',
-        pass: ''
+        user: config.email.address,
+        pass: config.email.pass
     }
 });
 
 
 exports.sendEmail = functions.https.onCall(async (html: string, email: string) => {
-    console.log(email);
     const options = {
         from: email,
-        to: 'sweetdogphotography@gmail.com',
+        to: config.email.address,
         subject: 'Sweet Photography- Contact Form',
         html: html
     };
