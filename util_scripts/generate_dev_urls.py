@@ -15,4 +15,7 @@ def create_json_file(urls):
         json.dump(urls, outfile)
 
 _urls = create_image_urls(images_path)
+
+
+
 create_json_file(_urls)

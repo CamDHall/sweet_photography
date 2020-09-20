@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/portfolio.scss';
-import {Masonry} from 'masonic';
+import Masonry from 'react-masonry-css'
+
+const breakpointColumnsObj = {
+    default: 3,
+    1100: 3,
+    700: 1,
+    500: 1
+  };
 
 const Portfolio = (iUrl: IUrlArray) => {
     generateImages(iUrl.urls);
 
-    const [columnCount, setColumnCount ] = useState(getColumnCount());
     const [ fullScreenImageSrc, setFullScreenImage ] = useState("");
 
-    useEffect(() => {
-        const resetColumnCount = () => {
-            setColumnCount(getColumnCount());
-        };
-
-        window.addEventListener('resize', resetColumnCount);
-    });
-
     const MasonryElement = (data: any) => (
-        <div className="grid-cell" role="group">
             <img src={process.env.PUBLIC_URL +"/images/gallery/" + data.data.src} alt={data.data.src} role="image" />
-        </div>
     );
+
+    const items = images.map(function(image) {
+        return <img src={process.env.PUBLIC_URL +"/images/gallery/" + image.src} key={image.src} />
+      });
 
     const enlargeImage = (event: any) => {
         setFullScreenImage(event.target.src);
@@ -34,14 +34,12 @@ const Portfolio = (iUrl: IUrlArray) => {
         <React.Fragment>
         <div className="wrapper portfolio">
             <div className="gallery">
-                <Masonry 
-                    items={images} 
-                    columnGutter={5}
-                    columnCount={columnCount}
-                    overscanBy={columnCount}
-                    render={MasonryElement} 
-                    className="no-border" 
-                    role="grid" />
+                <Masonry
+                    breakpointCols={breakpointColumnsObj}
+                    className="grid"
+                    columnClassName="grid-column">
+                        { items }
+                </Masonry>
             </div>
         </div>
         {fullScreenImageSrc !== "" ? 
@@ -63,22 +61,6 @@ function generateImages(urls: string[]) {
     urls.forEach(element => {
         images.push({ src: element});
     });
-}
-
-function getColumnCount() {
-    const width = window.screen.availWidth;
-
-    if (width > 1100) {
-        return 4;
-    }
-    if (width > 1000) {
-        return 3;
-    }
-    if (width > 800) {
-        return 2;
-    } else {
-        return 1;
-    }
 }
 
 export default Portfolio;
